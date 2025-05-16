@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
         var lookThis = cam.transform.forward;
         lookThis.y = 0;
         Quaternion rotation = Quaternion.LookRotation(lookThis);
-        var moveVector = _inputValue.x * transform.right+_inputValue.y*transform.forward;
-        //var moveVector = transform.TransformDirection(_inputValue);
+        //var moveVector = _inputValue.x * transform.right+_inputValue.y*transform.forward;
+        var moveVector = transform.TransformDirection(new Vector3(_inputValue.x, 0, _inputValue.y));
         characterController.Move(moveVector * speed);
         transform.rotation = rotation;
     }
