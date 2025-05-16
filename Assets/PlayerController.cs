@@ -3,10 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    float speed = 5.0f;
+    [SerializeField]float speed = 5.0f;
     Camera cam;
     private CharacterController characterController;
-    [SerializeField]private Vector2 _inputValue;
+    private Vector2 _inputValue;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(lookThis);
         //var moveVector = _inputValue.x * transform.right+_inputValue.y*transform.forward;
         var moveVector = transform.TransformDirection(new Vector3(_inputValue.x, 0, _inputValue.y));
-        characterController.Move(moveVector * speed);
+        characterController.SimpleMove(moveVector * speed);
         transform.rotation = rotation;
     }
 
